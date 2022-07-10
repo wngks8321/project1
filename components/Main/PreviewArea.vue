@@ -3,7 +3,7 @@
     <h2 class="tit_preview">미리보기</h2>
     <div class="wrap_contents">
       <div class="target_preview">
-
+        <p v-html="inputData"></p>
       </div>
     </div>
   </div>
@@ -11,7 +11,17 @@
 
 <script>
 export default {
-
+  data() {
+    return {
+      inputData: ''
+    }
+  },
+  created() {
+    this.$bus.$on('textAreaKeyup', (data) => {
+      const result = data.replaceAll('\n', '<br />');
+      this.inputData = result;
+    });
+  }
 }
 </script>
 

@@ -7,6 +7,7 @@
         class="textarea_writing"
         name="inputText"
         placeholder="이곳에 텍스트를 입력하세요."
+        @keyup="handleInput"
       >
       </textarea>
     </div>
@@ -15,7 +16,11 @@
 
 <script>
 export default {
-
+  methods: {
+    handleInput(event) {
+      this.$bus.$emit('textAreaKeyup', event.target.value);
+    }
+  }
 }
 </script>
 
