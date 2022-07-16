@@ -2,7 +2,7 @@
   <div class="wrap_preview">
     <h2 class="tit_preview">미리보기</h2>
     <div class="wrap_contents">
-      <div class="target_preview">
+      <div class="target_preview" :style="computedFontSetting">
         <p v-html="inputData"></p>
       </div>
     </div>
@@ -13,7 +13,8 @@
 export default {
   data() {
     return {
-      inputData: ''
+      inputData: '',
+      fontSetting: {}
     }
   },
   created() {
@@ -21,6 +22,22 @@ export default {
       const result = data.replaceAll('\n', '<br />');
       this.inputData = result;
     });
+  },
+  mounted() {
+    this.$bus.$on('settingSubmit', (data) => {
+      this.fontSetting = data;
+    });
+  },
+  computed: {
+    computedFontSetting() {
+      return {
+        "--font-family": this.fontSetting.fontFamily,
+        "--font-size": `${this.fontSetting.fontSize}px`,
+        "--letter-spacing": this.fontSetting.letterSpacing,
+        "--line-height": this.fontSetting.lineHeight,
+        "--font-weight": this.fontSetting.fontWeight,
+      }
+    }
   }
 }
 </script>
@@ -43,5 +60,13 @@ export default {
     width: 100%;
     min-height: 500px;
     background: powderblue;
+
+    p {
+      font-family: var(--font-family);
+      font-size: var(--font-size);
+      letter-spacing: var(--letter-spacing);
+      line-height: var(--letter-spacing);
+      font-weight: var(--font-weight);
+    }
   }
 </style>
