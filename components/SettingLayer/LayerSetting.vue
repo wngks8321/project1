@@ -34,7 +34,7 @@
       <dt>정렬</dt>
       <dd>
         <select id="" name="" ref="textAlign">
-          <option value="left">left</option>
+          <option value="left" selected>left</option>
           <option value="center">center</option>
           <option value="right">right</option>
         </select>
@@ -54,9 +54,7 @@
 <script>
 /*
   TODO 
-    - data의 fontSetting을 defaultStyle 등으로 바꾸고 해당 값으로 template에서 default값 설정
-
-    적용 버튼 클릭 시, 새로운 fontSetting 객체에 this.$refs들의 value를 적용하고, eventBus로 $emit
+    defalut 값 설정 필요함.
 */
 export default {
   data() {
@@ -80,6 +78,7 @@ export default {
       this.fontSetting.letterSpacing = this.$refs.letterSpacing.value;
       this.fontSetting.lineHeight = this.$refs.lineHeight.value;
       this.fontSetting.fontWeight = this.$refs.fontWeight.value;
+      this.fontSetting.textAlign = this.$refs.textAlign.value;
     },
     handleSubmitClick() {
       this.setFontSetting();

@@ -36,6 +36,7 @@ export default {
         "--letter-spacing": this.fontSetting.letterSpacing,
         "--line-height": this.fontSetting.lineHeight,
         "--font-weight": this.fontSetting.fontWeight,
+        "--text-align": this.fontSetting.textAlign,
       }
     }
   }
@@ -67,6 +68,7 @@ export default {
       letter-spacing: var(--letter-spacing);
       line-height: var(--letter-spacing);
       font-weight: var(--font-weight);
+      text-align: var(--text-align);
     }
   }
 </style>
